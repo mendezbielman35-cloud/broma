@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ SYSTEM CRITICAL ERROR</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', monospace; padding: 20px; margin: 0; overflow: hidden; height: 100vh; box-sizing: border-box; }
+        .pantalla-alerta { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #7a0000; color: #fff; z-index: 1000; justify-content: center; align-items: center; flex-direction: column; text-align: center; font-family: sans-serif; padding: 20px; box-sizing: border-box; }
+        .pantalla-alerta h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .consola { width: 100%; height: 90vh; overflow-y: auto; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.4; }
+        .progreso-barra { width: 100%; background-color: #333; border: 1px solid #00ff00; margin-top: 10px; display: none; }
+        .progreso-llenado { width: 0%; height: 20px; background-color: #00ff00; text-align: center; color: black; font-weight: bold; font-size: 0.8rem; line-height: 20px; }
+        .boton-iniciar { background-color: #00ff00; color: black; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 0 15px #00ff00; }
+        .centrar-btn { display: flex; justify-content: center; align-items: center; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div class="centrar-btn" id="capaBoton">
+        <button class="boton-iniciar" id="btnIniciar">> ACCEDER AL SERVIDOR_</button>
+    </div>
+    <div class="consola" id="consolaLog" style="display: none;"></div>
+    <div class="progreso-barra" id="barra">
+        <div class="progreso-llenado" id="llenado">0%</div>
+    </div>
+    <div class="pantalla-alerta" id="pantallaFinal">
+        <h1>¡SISTEMA HACKEADO! ☠️</h1>
+        <p style="font-size: 1.5rem; color: #ffcc00; font-weight: bold;">Extracción de galería y contraseñas completada al 100%.</p>
+        <p style="margin-top: 30px; font-size: 1.3rem; border: 2px dashed #fff; padding: 10px; background: rgba(0,0,0,0.4);">¡JAJAJA CAÍSTE! 🤣🤣 Tu teléfono está completamente a salvo.</p>
+    </div>
+    <script>
+        const btn = document.getElementById('btnIniciar');
+        const capaBtn = document.getElementById('capaBoton');
+        const consola = document.getElementById('consolaLog');
+        const barra = document.getElementById('barra');
+        const llenado = document.getElementById('llenado');
+        const pantallaFinal = document.getElementById('pantallaFinal');
+        const lineas = [
+            "> Conectando con la IP de la víctima...",
+            "> IP Localizada: 192.168.1.84 [Puerto: 443]",
+            "> Saltando cortafuegos de Android...",
+            "> Acceso concedido a la raíz del dispositivo (ROOT ACCESS).",
+            "> Abriendo base de datos de WhatsApp...",
+            "> Descargando lista de contactos...",
+            "> Descargando archivos multimedia del sistema...",
+            "> Leyendo contraseñas guardadas en Google Chrome...",
+            "> Copiando claves bancarias cifradas...",
+            "> Alerta: Intentando ocultar rastro en el registro...",
+            "> Extrayendo ubicación GPS actual en tiempo real...",
+            "> Todo el contenido ha sido empaquetado en un servidor remoto."
+        ];
+        let indexLinea = 0;
+        btn.addEventListener('click', () => {
+            capaBtn.style.display = 'none';
+            consola.style.display = 'block';
+            escribirConsola();
+        });
+        function escribirConsola() {
+            if (indexLinea < lineas.length) {
+                consola.innerText += lineas[indexLinea] + "\n";
+                consola.scrollTop = consola.scrollHeight;
+                indexLinea++;
+                setTimeout(escribirConsola, 400);
+            } else {
+                barra.style.display = 'block';
+                animarBarra();
+            }
+        }
+        let porcentaje = 0;
+        function animarBarra() {
+            if (porcentaje <= 100) {
+                llenado.style.width = porcentaje + '%';
+                llenado.innerText = 'EXTRAYENDO ARCHIVOS: ' + porcentaje + '%';
+                porcentaje += 5;
+                setTimeout(animarBarra, 50);
+            } else {
+                pantallaFinal.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>
